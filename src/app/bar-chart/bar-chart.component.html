@@ -1,0 +1,34 @@
+<svg [style.height.px]="BarChart.SvgHeight" [style.width.px]="BarChart.SvgWidth">   
+    <g *ngFor="let chartable of BarChart.Data; let i = index">
+        <g *ngIf="showTimeLines(chartable)">
+            <line class="month-line" [attr.x1]="getLineOffset(chartable)" y1="0" [attr.x2]="getLineOffset(chartable)" [attr.y2]=getLineHeight() style="stroke:#E21654;stroke-width:1;font-weight:bolder" />
+            <text class="time-line-text" [attr.x]="getTextOffset(chartable)" y="12" (click)="onTimeLineClick(chartable)" font-size="12px" font-family="Segoe UI" fill="#E21654" style="font-weight:400;cursor:pointer;">{{getLineText(chartable)}}</text>
+        </g>
+        <rect [style.height.px]="getBarHeight(chartable.Value)" 
+            [style.width.px]="getBarWidth()" 
+            [style.x.px]="getXOffset(chartable)" 
+            [style.y.px]="getYOffset(chartable.Value)"
+            class="bar"
+            [attr.id]="getBarId(chartable)"
+            [ngClass]="{'bar-selected': chartable.Selected}"
+            (click)="onBarClick(chartable)">
+        </rect>        
+    </g>   
+    <g visibility="hidden" *ngFor="let chartable of BarChart.Data; let i = index" [attr.id]="chartable.Description">
+            <set attributeName="visibility" from="hidden" to="visible" [attr.begin]="getBarMouseOver(chartable)" [attr.end]="getBarMouseOut(chartable)" />
+            <animate attributeType="CSS" attributeName="opacity" from="0" to="1" dur="0.15s" [attr.begin]="getBarMouseOver(chartable)" />
+            <set attributeName="visibility" from="visible" to="hidden" [attr.begin]="getBarMouseOut(chartable)" [attr.end]="getBarMouseOver(chartable)" />
+            <animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="0.15s" [attr.begin]="getBarMouseOut(chartable)" />
+            <g>
+                <rect [style.height.px]="45"  
+                    [style.width.px]="100"              
+                    [style.x.px]="getTooltipXOffset(chartable)" 
+                    [style.y.px]="getTooltipYOffset(chartable)" fill="#423572">                
+                </rect>     
+                <text [attr.x]="getTooltipDescriptionXOffset(chartable)" [attr.y]="getTooltipDescriptionYOffset(chartable)" font-size="16px" font-family="Segoe UI" fill="#efefef">{{chartable.Description}}</text>
+                <text [attr.x]="getTooltipValueXOffset(chartable)" [attr.y]="getTooltipValueYOffset(chartable)" font-size="16px" font-family="Segoe UI" fill="#efefef">{{chartable.Value | currency:'USD':true:'1.0-0'}}</text>            
+            </g>            
+    </g> 
+</svg>
+
+<!-- when first of month is last month the time line is messed up on the full year view -->

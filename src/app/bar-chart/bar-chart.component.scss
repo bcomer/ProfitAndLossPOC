@@ -1,0 +1,55 @@
+@import '../../Utilities/_variables';
+
+svg {
+        background-color: $chart-background;
+        border-radius: $chart-corner-radius;
+        padding-top: $chart-padding;     
+        animation-name: slowFade;
+        animation-duration: 2s;
+        
+        .time-line-text{
+                animation-name: slowFade;
+                animation-duration: 5s;
+                &:hover {                         
+                        font-size: 16px;                      
+                }
+        }
+
+        .month-line {
+                animation-name: slowFade;
+                animation-duration: 5s;
+        }
+}
+
+rect.bar {
+        fill: $bar-fill;        
+        cursor: pointer;
+        transition: 200ms;
+        transition-timing-function: ease-in-out;
+        animation-name: growToHeight;
+        animation-duration: 2s;
+
+        &:hover {
+                fill: $bar-hover;
+        }
+
+        &.bar-selected {
+             fill: $bar-selected;   
+
+             &:hover {
+                fill: $bar-hover;
+             }
+        }
+}
+
+@keyframes growToHeight {
+        0% {height: 0; opacity: 0}       
+        100% {height: 100%; opacity: 1}
+}
+
+@keyframes slowFade {
+        0% {opacity: 0}       
+        100% {opacity: 1}
+}
+
+

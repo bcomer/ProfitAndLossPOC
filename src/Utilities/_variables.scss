@@ -1,0 +1,12 @@
+// Main
+$body-color: #efefef;
+
+// Bar Chart
+$chart-background: white;
+$chart-corner-radius: 5px;
+$chart-padding: 10px;
+$bar-fill: #7F7F7F;
+$bar-accent: #423572;
+$bar-selected: darken($bar-accent, 5);
+$bar-hover: lighten($bar-selected, 10);
+

@@ -1,0 +1,137 @@
+#my-bar-chart {
+    display: flex;
+    flex-flow: row wrap;     
+}
+
+#my-bar-chart-title {
+    font-size: 36px;
+    min-width: 60%;
+    font-weight: 400;
+    color: #7e7e7e;
+    animation-name: easeIn;
+    animation-duration: 3s;
+}
+
+#my-bar-chart-date {
+    font-size: 48px;
+    text-align: right;    
+    width: 40%;
+}
+
+#my-chart-title-bar {
+    display: flex;
+    flex-flow: row wrap;         
+    margin-bottom: 5px;
+    padding-top: 10px;
+    // margin-left: 10px;
+}
+
+#my-chart-wrapper {
+    width: 1776px;
+    margin-top: 30px;
+    margin-left: 64px;
+    margin-right: 64px;
+    background-color: white;
+    padding-left: 10px;
+    padding-right: 5px;
+    border-radius: 5px;
+    padding-bottom: 8px;
+    animation-name: easeIn;
+    animation-duration: 2s;
+}
+
+bc-chart-output {
+    animation-name: easeIn;
+    animation-duration: 3s;
+}
+
+@keyframes easeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+#button-wrapper {
+    display: flex;
+    flex-flow: row wrap;      
+    margin-left: 756px; 
+    margin-bottom: 6px;   
+
+    button {
+        margin-right: 5px;
+    }
+}
+
+button:focus {outline:0;}
+
+.zoom-in-button {
+    color: #E21654;
+    background-color: white;
+    height: 22px;
+    width: 78px;
+    border: #E21654 solid 1px;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: 200ms;
+    transition-timing-function: ease-in-out;
+    animation-name: easeIn;
+    animation-duration: 3s;
+
+    &:hover {        
+        background-color: #efefef;
+    } 
+}
+
+.directional-button {
+    color: #E21654;
+    background-color: white;
+    height: 22px;
+    width: 22px;
+    border: #E21654 solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    animation-name: easeIn;
+    animation-duration: 3s;
+
+    &.disabled {
+        border-color: #7F7F7F;
+        cursor: not-allowed;
+        .caret {
+            fill: #7F7F7F;
+            stroke:#7F7F7F;
+            stroke-width:1
+        }
+
+        &:hover {
+            border-color: #7F7F7F;
+            background-color: white
+        }
+    }
+
+    .caret {
+        fill: #E21654;
+        stroke:#E21654;
+        stroke-width:1
+    }
+
+    &:hover{
+        border-color: lighten(#E21654, 15);
+        background-color: #efefef;        
+    }   
+}
+
+#Date-Output-Wrapper{
+    width: 1652px;
+    text-align: center;
+    animation-name: easeIn;
+    animation-duration: 3s;
+    // margin-bottom: 15px;
+    // justify-content: center;
+    // align-content: center;
+    .Date-Output{
+        // color: #4c3d83;
+        color: #767676;
+        font-weight: bold;
+        // margin-bottom: 15px;
+        font-size: 24px;
+    }
+}

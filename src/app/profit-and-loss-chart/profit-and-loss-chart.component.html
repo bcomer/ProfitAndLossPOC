@@ -1,0 +1,27 @@
+<div id="my-chart-wrapper">
+    <div id="my-chart-title-bar">
+        <span id="my-bar-chart-title">Profit and Loss by Day</span>
+    </div>
+    <div id="button-wrapper" >
+        <button class="directional-button" [ngClass]="{'disabled': shouldDisableLeft()}" (click)="onNextLeftClicked()">
+            <svg class="caret" height="20" width="20">
+                <polygon points="0,9.5 6,4 6,14" />
+            </svg>
+        </button>        
+        <button class="zoom-in-button" (click)="onZoomInClicked()">{{toggleZoomText()}}</button>
+        <button class="directional-button disabled" [ngClass]="{'disabled': shouldDisableRight()}" (click)="onNextRightClicked()">
+            <svg class="caret" height="20" width="20">
+                <polygon points="8,9.5 2,5 2,14" />
+            </svg>
+        </button>
+    </div>
+    <div id="my-bar-chart">        
+        <bc-bar-chart [BarChart]="BarChart" (barClicked)="onBarChartClicked($event)" (timeLineClicked)="onTimeLineClicked($event)"></bc-bar-chart>        
+        <bc-chart-output [Tiles]="OutputTiles"></bc-chart-output>               
+    </div>
+    <div id="Date-Output-Wrapper">
+            <span *ngIf="isZoomIn" class="Date-Output">{{getMonthlyDateOutputText() | date:'LLLL yyyy'}}</span>
+            <span *ngIf="!isZoomIn" class="Date-Output">{{getYearlyDateOutputText() | date:'yyyy'}}</span>
+    </div> 
+</div>
+<!-- <a</a> -->

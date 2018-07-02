@@ -1,0 +1,4 @@
+<bc-text-tile *ngFor="let tile of Tiles; let i = index"
+  [style.margin-right.px] = 'i == Tiles.length - 1 ? 0 : tile.Gutter' 
+  [TileData]="tile">  
+</bc-text-tile>

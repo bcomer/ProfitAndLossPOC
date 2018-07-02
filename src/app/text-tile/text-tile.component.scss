@@ -1,0 +1,49 @@
+:host {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: white;    
+    color: #969696;    
+    margin-bottom: 5px;
+    border-top: 1px solid #969696;
+    padding-top: 6px; 
+
+    .title {
+        font-size: 16px;
+        text-align: center;
+        font-weight: 500;
+        width: 100%;   
+        margin-top: 0;     
+    }  
+
+    .value {
+        font-size: 18px;
+        font-weight: bolder;
+        text-align: center;
+        width: 100%;
+        color: #4c3d83;   
+        margin-top: 0px;     
+    }
+
+    &:first-child > .value {
+        margin-top: 0;
+        font-weight: 500;
+        color: #969696;         
+    }
+    
+    &:last-child {
+        margin-right: 0;        
+    }
+
+    &.error > .value {
+        color: lightcoral; // some redish color
+    }
+
+    &.warning > .value {
+        color: lightsalmon; // some yellowish color
+    }
+
+    &.info > .value {
+        color: skyblue; // some blueish color
+    }
+}
+
