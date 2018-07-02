@@ -14,15 +14,26 @@ export class PnLDataService {
 
   constructor(private http: Http) { }
 
+  // added to mimic web api piece
   InitializeData(): Observable<boolean> {
-    return this.http.get('http://localhost:28560/api/profitandloss')
+    return this.http.get('./assets/profitandloss.json')
       .pipe(
-        map(res => {
+        map(res => {         
           this.profitAndLoss = res.json();
           return true;
         })
       );     
   }
+
+  // InitializeData(): Observable<boolean> {
+  //   return this.http.get('http://localhost:28560/api/profitandloss')
+  //     .pipe(
+  //       map(res => {
+  //         this.profitAndLoss = res.json();
+  //         return true;
+  //       })
+  //     );     
+  // }
 
   ProcessData() {
     this.pnLBarData = [];
